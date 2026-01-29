@@ -20,7 +20,7 @@
 #define pgm_read_byte(addr) (*(const unsigned char *)(addr))
 
 // ---------------------------------------------------------------------------
-// NEW: Multi-plane initialization
+// Multi-plane initialization
 // Allows positioning and sizing a graphics plane anywhere on screen
 // ---------------------------------------------------------------------------
 void init_graphics_plane(uint16_t canvas_struct_address,
@@ -48,6 +48,7 @@ void init_bitmap_graphics(uint16_t canvas_struct_address,
 // ---------------------------------------------------------------------------
 void switch_buffer(uint16_t buffer_data_address);
 void switch_buffer_plane(uint16_t canvas_struct_address, uint16_t buffer_data_address);
+void set_plane_position(uint16_t canvas_struct_address, uint16_t x_position, uint16_t y_position);
 
 void erase_buffer(uint16_t buffer_data_address);
 void erase_buffer_sized(uint16_t buffer_data_address, uint16_t width, uint16_t height, uint8_t bpp);

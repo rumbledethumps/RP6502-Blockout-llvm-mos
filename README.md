@@ -1,66 +1,54 @@
-# RP6502 VSCode Scaffolding for LLVM-MOS
+# ⬛ BLOCKOUT - RP6502 Edition
 
-This is scaffolding for a new Picocomputer 6502 software project.
+![logo](images/blockout_logo.png)
 
-This is EXPERIMENTAL. Standard library support is limited.
-The LLVM-MOS compiler generates excellent code but does not yet have C library
-support as good as [cc65](https://github.com/picocomputer/vscode-cc65).
+A 3D block-dropping puzzle game  running natively on the **Picocomputer RP6502**. 
+Drop and rotate colorful cubes in a dynamic 3D pit. Clear complete lines to advance!
 
-### LLVM PATH notes
+***Based heavily on the original by California Dreams.***
 
-LLVM-MOS must be in your PATH. However, this may conflict with other LLVM
-installations, like the one that comes with your operating system.
-In that case, you can adjust the path for only CMake with a VSCode setting.
-Add a file `.vscode/settings.json` with the following contents. Adjust the
-path for where you installed LLVM-MOS.
-```
-{
-    "cmake.environment": {
-        "PATH": "~/llvm-mos/bin:${env:PATH}"
-    }
-}
-```
+## 🕹️ GAMEPLAY
 
-### Linux Tools Install:
- * [VSCode](https://code.visualstudio.com/). This has its own installer.
- * An install of [LLVM-MOS](https://llvm-mos.org/wiki/Welcome).
-   See PATH notes above.
- * The following tools installed from your package managers:
-    * `sudo apt-get install cmake python3 pip git build-essential`
-    * `pip install pyserial`
+**BLOCKOUT** is a challenging 3D block-stacking puzzle game. Control falling 3D blocks (tetrominoes) 
+and place them strategically in the pit. Clear lines to earn points and advance to higher levels.
 
-### Windows Tools Install:
- * [VSCode](https://code.visualstudio.com/). This has its own installer.
- * An install of [LLVM-MOS](https://llvm-mos.org/wiki/Welcome).
-   See PATH notes above.
- * Install python by typing `python3` which will launch the Microsoft Store
-   where you start the install. If python runs, this has already been done,
-   exit python with Ctrl-Z plus Return.
- * Install the python serial library with `pip install pyserial`.
- * `winget install -e --id Kitware.CMake`.
- * `winget install -e --id GnuWin32.Make`.
-    Add "C:\Program Files (x86)\GnuWin32\bin" to your path.
- * `winget install -e --id Git.Git`.
+### Game Features
+- **3D Isometric Perspective**: Watch your blocks stack in full 3D
+- **Multiple Pit Sizes**: Play 4×4, or 5×5 grids
+- **Color-Coded Blocks**: 7 unique colored pieces with distinct shapes
+- **Progressive Difficulty**: Game speeds up as you advance levels
+- **Demo Mode**: Auto-play demonstration on the start screen
+- **Sound Effects**: Retro 8-bit audio with PSG synthesizer
 
-### Getting Started:
-Go to the [GitHub template](https://github.com/picocomputer/vscode-llvm-mos)
-and select "Use this template" then "Create a new repository". GitHub will
-make a clean project for you to start with. Then you can download the
-repository and open the files.
+### Controls
+| Key | Action |
+|-----|--------|
+| **[←][→][↑][↓]** | Move piece |
+| **[Q][W][E]** | Rotate clockwise |
+| **[A][S][D]** | Rotate counterclockwise |
+| **SPACE** | Drop piece faster |
+| **P** | Pause/Resume |
 
-```
-$ git clone [path_to_github]
-$ cd [to_where_it_cloned]
-$ code .
+
+## 🖼️ Screenshots
+
+![Blockout Gameplay](images/blockout_game.gif)
+
+## 🛠️ Building & Installation
+
+### Prerequisites
+
+This project requires the **llvm-mos toolchain** to build:
+
+```bash
+# Install llvm-mos toolchain
+# See: https://github.com/llvm-mos/llvm-mos-sdk
 ```
 
-Install the extensions and choose the default or obvious choice if VSCode
-prompts you. Choose "[Unspecified]" for the CMake kit.
+### Build Instructions
 
-You can build with F7. Running a program is done with "Run Build Task..."
-CTRL-SHIFT-B. If the default communications device doesn't work, edit ".rp6502"
-in the project root folder. This file will be created the first time you
-"Run Build Task..." and will be ignored by git.
+Follow istructions found here: [vscode-llvm-mos](https://github.com/picocomputer/vscode-llvm-mos)
 
-Edit CMakeLists.txt to add new source and asset files. It's
-pretty normal C/ASM development from here on.
+## 📝 Author
+
+Created by **Grzegorz Rakoczy**

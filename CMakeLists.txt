@@ -6,11 +6,8 @@ project(MY-RP6502-PROJECT)
 add_executable(blockout)
 
 rp6502_asset(blockout 0x10000 images/background-320x180.bin)
-rp6502_asset(blockout 0x17080 images/start_screen-180x180.bin)
-rp6502_executable(blockout
-    background-320x180.bin.rp6502
-    start_screen-180x180.bin.rp6502
-)
+rp6502_asset(blockout start_screen images/start_screen-180x180.bin)
+rp6502_executable(blockout DATA file RESET file)
 
 target_sources(blockout PRIVATE
     src/colors.c

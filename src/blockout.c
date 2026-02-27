@@ -117,7 +117,7 @@ void draw_start_screen(uint16_t buf) {
     uint16_t front_buffer = viewport_buffers[active_buffer];
     uint16_t back_buffer = viewport_buffers[!active_buffer];
 
-    int fd = open("blockout_start_screen.bin", O_RDONLY);
+    int fd = open("ROM:start_screen", O_RDONLY);
     if (fd >= 0) {
         int bytes_read = read_xram(front_buffer, VIEWPORT_SIZE, fd);
         if (bytes_read >= 0) {
@@ -128,7 +128,7 @@ void draw_start_screen(uint16_t buf) {
         }
         close(fd);
     } else {
-        printf("ERROR: reading blockout_start_screen.bin file %i\n\n", fd);
+        printf("ERROR: reading ROM:start_screen %i\n\n", fd);
     }
 
     switch_buffer_plane(VIEWPORT_STRUCT_ADDR, front_buffer);
@@ -373,21 +373,6 @@ int main(void) {
         1, VIEWPORT_X, VIEWPORT_Y, VIEWPORT_WIDTH, VIEWPORT_HEIGHT, 4);
     
     switch_buffer_plane(VIEWPORT_STRUCT_ADDR, VIEWPORT_BUFFER_0);
-
-
-    // Save start screen image from VIEWPORT_BUFFER_0 to filesystem
-    int fd; 
-    fd = open("blockout_start_screen.bin", O_WRONLY | O_CREAT | O_TRUNC);
-    if (fd >= 0) {
-        int bytes_written = write_xram(VIEWPORT_BUFFER_0, VIEWPORT_SIZE, fd);
-        close(fd);  
-        if (bytes_written < 0) {
-            printf("ERROR: write_xram failed %i\n\n", bytes_written);
-        }
-    } else {
-        printf("ERROR: writing blockout_start_screen.bin file %i\n\n", fd);
-    }
-
 
     erase_buffer_sized(VIEWPORT_BUFFER_0, VIEWPORT_WIDTH, VIEWPORT_HEIGHT, 4);
     erase_buffer_sized(VIEWPORT_BUFFER_1, VIEWPORT_WIDTH, VIEWPORT_HEIGHT, 4);
